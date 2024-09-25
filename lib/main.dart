@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutternews/app/screens/signup_screen.dart';
-import 'package:flutternews/app/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'app/providers/auth_provider.dart';
 import 'app/providers/news_provider.dart';
+import 'app/screens/splash_screen.dart';
+import 'constants/theme.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -26,6 +26,8 @@ class MyApp extends StatelessWidget {
             create: (_) => NewsProvider()..fetchRemoteConfig()),
       ],
       child: MaterialApp(
+        theme: AppTheme.darkTheme,
+        darkTheme: AppTheme.darkTheme,
         home: SplashScreen(),
       ),
     );
