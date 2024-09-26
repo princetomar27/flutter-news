@@ -7,15 +7,50 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     fontFamily: 'Raleway',
     primaryColor: ColorPalettes.lightPrimary,
-    scaffoldBackgroundColor: ColorPalettes.lightBackground,
+    scaffoldBackgroundColor: ColorPalettes.white,
     dividerColor: ColorPalettes.darkBackground,
     inputDecorationTheme: InputDecorationTheme(
-      focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: ColorPalettes.lightAccent),
+      filled: true,
+      fillColor: Colors.grey[200],
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(6),
+        borderSide: BorderSide.none,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(6),
+        borderSide: BorderSide(
+          color: ColorPalettes.primaryColor,
+          width: 1.5,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(6),
+        borderSide: BorderSide.none,
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(
+          ColorPalettes.primaryColor,
+        ),
+        minimumSize: MaterialStateProperty.all(
+          const Size(231, 48),
+        ),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6),
+          ),
+        ),
+        textStyle: MaterialStateProperty.all(
+          const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+        ),
       ),
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: ColorPalettes.appBarPrimary,
+      backgroundColor: ColorPalettes.primaryColor,
       iconTheme: IconThemeData(color: ColorPalettes.darkBackground),
       toolbarTextStyle: TextTheme(
         titleLarge: TextStyle(
@@ -31,7 +66,7 @@ class AppTheme {
       ),
     ),
     colorScheme: ColorScheme.light(
-      primary: ColorPalettes.lightPrimary,
+      primary: ColorPalettes.darkPrimary,
       secondary: ColorPalettes.lightAccent,
     ).copyWith(background: ColorPalettes.lightBackground),
   );
@@ -40,15 +75,56 @@ class AppTheme {
     fontFamily: 'Raleway',
     brightness: Brightness.dark,
     primaryColor: ColorPalettes.darkPrimary,
-    scaffoldBackgroundColor: ColorPalettes.darkBackground,
+    scaffoldBackgroundColor: Colors.black,
     dividerColor: ColorPalettes.lightPrimary,
     inputDecorationTheme: InputDecorationTheme(
-      focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: ColorPalettes.darkAccent),
+      filled: true,
+      fillColor: Colors.grey[200],
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(6),
+        borderSide: const BorderSide(
+          color: Colors.grey,
+          width: 1.0,
+        ),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(6),
+        borderSide: BorderSide(
+          color: ColorPalettes.primaryColor,
+          width: 1.5,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(6),
+        borderSide: const BorderSide(
+          color: Colors.grey,
+          width: 1.0,
+        ),
+      ),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(
+          ColorPalettes.primaryColor,
+        ),
+        minimumSize: MaterialStateProperty.all(
+          const Size(231, 48),
+        ),
+        shape: MaterialStateProperty.all(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6),
+          ),
+        ),
+        textStyle: MaterialStateProperty.all(
+          const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+        ),
       ),
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: ColorPalettes.appBarPrimary,
+      backgroundColor: ColorPalettes.primaryColor,
       iconTheme: IconThemeData(color: ColorPalettes.lightBackground),
       toolbarTextStyle: TextTheme(
         titleLarge: TextStyle(

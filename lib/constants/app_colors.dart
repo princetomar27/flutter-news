@@ -26,5 +26,5 @@ class ColorPalettes {
     BlendMode.saturation,
   );
 
-  static Color appBarPrimary = const Color(0xFF0C54BE);
+  static Color primaryColor = const Color(0xFF0C54BE);
 }

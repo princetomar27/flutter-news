@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutternews/app/providers/auth_provider.dart';
-import 'package:flutternews/app/screens/news_screen.dart';
-import 'package:flutternews/app/screens/signup_screen.dart';
 import 'package:provider/provider.dart';
+
+import '../providers/auth_provider.dart';
+import 'auth/login_screen.dart';
+import 'news_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -31,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: isUserLoggedIn == true ? NewsScreen() : SignUpScreen(),
+      child: isUserLoggedIn == true ? const NewsScreen() : const LoginScreen(),
     );
   }
 }

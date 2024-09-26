@@ -26,9 +26,10 @@ class MyApp extends StatelessWidget {
             create: (_) => NewsProvider()..fetchRemoteConfig()),
       ],
       child: MaterialApp(
-        theme: AppTheme.darkTheme,
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
-        home: SplashScreen(),
+        home: const SplashScreen(),
       ),
     );
   }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutternews/app/screens/news_screen.dart';
 import 'package:provider/provider.dart';
-import '../providers/auth_provider.dart';
+
+import '../../providers/auth_provider.dart';
+import '../news_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -27,18 +28,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 )
               : Column(
                   children: [
+                    const Spacer(),
                     TextFormField(
                       decoration: InputDecoration(labelText: 'Name'),
                       validator: (value) =>
                           value!.isEmpty ? 'Enter your name' : null,
                       onSaved: (value) => _name = value,
                     ),
+                    const SizedBox(height: 20),
                     TextFormField(
                       decoration: InputDecoration(labelText: 'Email'),
                       validator: (value) =>
                           value!.isEmpty ? 'Enter your email' : null,
                       onSaved: (value) => _email = value,
                     ),
+                    const SizedBox(height: 20),
                     TextFormField(
                       decoration: InputDecoration(labelText: 'Password'),
                       validator: (value) =>
@@ -46,7 +50,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       onSaved: (value) => _password = value,
                       obscureText: true,
                     ),
-                    SizedBox(height: 20),
+                    const Spacer(),
                     ElevatedButton(
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
@@ -76,6 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       },
                       child: Text('Sign Up'),
                     ),
+                    const SizedBox(height: 20),
                   ],
                 ),
         ),

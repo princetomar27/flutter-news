@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
+import '../../constants/app_colors.dart';
 import '../../constants/helpers/date_time_helper.dart';
+import '../../constants/helpers/is_dark_theme_helper.dart';
 
 class NewsCard extends StatelessWidget {
   final String newsTitle;
@@ -19,7 +22,14 @@ class NewsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     String timeAgo = publishedAt != null ? timeAgoSinceDate(publishedAt!) : '';
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+      decoration: BoxDecoration(
+        color: context.isDarkMode
+            ? ColorPalettes.darkBackground
+            : ColorPalettes.lightBackground,
+        borderRadius: BorderRadius.circular(6),
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -33,7 +43,7 @@ class NewsCard extends StatelessWidget {
                     fontSize: 14,
                     fontWeight: FontWeight.w700,
                   ),
-                  maxLines: 2,
+                  maxLines: imageURL.isEmpty ? 4 : 2,
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 8),
@@ -62,9 +72,7 @@ class NewsCard extends StatelessWidget {
           ),
           const SizedBox(width: 16),
           imageURL.isEmpty
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
+              ? const SizedBox.shrink()
               : Container(
                   height: 119,
                   width: 119,

@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutternews/app/models/news.dart';
 
@@ -14,6 +13,7 @@ class NewsProvider with ChangeNotifier {
   bool get isLoading => _isLoading;
   List<Article> get newsList => _newsList;
 
+  // Fetch the current country code from Remote Config
   Future<void> fetchRemoteConfig() async {
     FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
     await remoteConfig.setDefaults({'country_code': 'us'});
@@ -22,6 +22,7 @@ class NewsProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  // Fetch news based on the current country code
   Future<void> fetchNews() async {
     if (_countryCode == null) {
       await fetchRemoteConfig();
@@ -40,5 +41,16 @@ class NewsProvider with ChangeNotifier {
       _isLoading = false;
       notifyListeners();
     }
+  }
+
+  // Set a new country code, update Firebase Remote Config, and fetch news
+  Future<void> setCountry(String newCountry) async {
+    FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+    await remoteConfig.setDefaults({'country_code': newCountry});
+    await remoteConfig.fetchAndActivate();
+
+    _countryCode = newCountry;
+    notifyListeners();
+    await fetchNews();
   }
 }
